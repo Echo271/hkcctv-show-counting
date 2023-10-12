@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HKCCTV</title>
+    <link rel="icon" type="image/png" href="https://firebasestorage.googleapis.com/v0/b/hk-cctv-hk-teknologi.appspot.com/o/assets%2Fhk-iot-logo.png?alt=media&token=4a4e4b98-912d-4975-9b5b-89dd41d421d9&_gl=1*1y78ae2*_ga*MjA3OTQ2NjI3MC4xNjk0MDczMzcx*_ga_CW55HF8NVT*MTY5NzA4MDg0Mi40LjEuMTY5NzA4MTU1Ny4zMC4wLjA.">
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <section id="index" class="pt-5">
+        <div class="container">
+            <div class="w-full self-center py-4">
+                <img src="https://firebasestorage.googleapis.com/v0/b/hk-cctv-hk-teknologi.appspot.com/o/assets%2Fhk-iot-full.png?alt=media&token=544c607a-c7f5-433c-a4cc-1f08be65caac&_gl=1*153p0le*_ga*MjA3OTQ2NjI3MC4xNjk0MDczMzcx*_ga_CW55HF8NVT*MTY5NzA4MDg0Mi40LjEuMTY5NzA4MDg5OS4zLjAuMA.." alt="HK IoT" class="w-1/2 m-auto">
+                <h1 class="text-center text-4xl font-bold text-blue-900">CCTV</h1>
+            </div>
+
+            <div class="flex flex-wrap py-5">
+
+                <div class="w-full self-center px-2">
+                    <h2 class="text-center py-3 font-bold text-xl">Masuk</h2>
+                    <div class="w-3/4 m-auto p-8 bg-second rounded-lg shadow-lg">
+                        <p id="masuk" class="text-center text-5xl text-primary font-display"></p>
+                    </div>
+                </div>
+
+                <div class="w-full self-center px-2">
+                    <h2 class="text-center py-3 font-bold text-xl">Keluar</h2>
+                    <div class="w-3/4 m-auto p-8 bg-second rounded-lg shadow-lg">
+                        <p id="keluar" class="text-center text-5xl text-primary font-display"></p>
+                    </div>
+                </div>
+            
+            </div>
+            <div class="w-full flex py-5">
+                <a id="apk" href="https://firebasestorage.googleapis.com/v0/b/hk-cctv-hk-teknologi.appspot.com/o/apk-release%2Fhkcctv-20231004-1145.apk?alt=media&token=d24a9f7c-d055-419e-9180-d7a9daf10155&_gl=1*1iw6r38*_ga*MjA3OTQ2NjI3MC4xNjk0MDczMzcx*_ga_CW55HF8NVT*MTY5NzA4MDg0Mi40LjEuMTY5NzA4MTc0NC41Mi4wLjA." class="text-base font-semibold text-white bg-primary py-5 w-3/4 text-center m-auto rounded-full"> Download Mobile Apps </a>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf-8">
+        var socket = io('http://api-hkiot.kazuyosan.my.id:8081');
+        socket.on('connect', function() {
+           console.log('connected');
+        });
+        socket.on('guest_count', function(data) {
+           document.getElementById('masuk').innerHTML = data['in'];
+           document.getElementById('keluar').innerHTML = data['out'];
+        });
+    </script>
+</body>
+</html>
