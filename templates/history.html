@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat Pengunjung</title>
+    <link rel="icon" type="image/png" href="https://firebasestorage.googleapis.com/v0/b/hk-cctv-hk-teknologi.appspot.com/o/assets%2Fhk-iot-logo.png?alt=media&token=4a4e4b98-912d-4975-9b5b-89dd41d421d9&_gl=1*1y78ae2*_ga*MjA3OTQ2NjI3MC4xNjk0MDczMzcx*_ga_CW55HF8NVT*MTY5NzA4MDg0Mi40LjEuMTY5NzA4MTU1Ny4zMC4wLjA.">
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <section id="index" class="pt-5">
+        <div class="container">
+
+            <div class="w-full self-center py-4">
+                <img src="https://firebasestorage.googleapis.com/v0/b/hk-cctv-hk-teknologi.appspot.com/o/assets%2Fhk-iot-full.png?alt=media&token=544c607a-c7f5-433c-a4cc-1f08be65caac&_gl=1*153p0le*_ga*MjA3OTQ2NjI3MC4xNjk0MDczMzcx*_ga_CW55HF8NVT*MTY5NzA4MDg0Mi40LjEuMTY5NzA4MDg5OS4zLjAuMA.." alt="HK IoT" class="w-1/2 m-auto">
+                <h1 class="text-center text-4xl font-bold text-primary">CCTV</h1>
+                <h1 class="text-center text-2xl font-bold text-primary">Riwayat Pengunjung</h1>
+            </div>
+
+            <div class="w-full self-center py-4">
+                <div class="table w-3/4 m-auto text-center">
+                    <div class="table-header-group bg-primary text-white">
+                        <div class="table-row">
+                            <div class="table-cell py-2 border-x-2 border-white">Tanggal</div>
+                            <div class="table-cell">Masuk</div>
+                            <div class="table-cell border-x-2 border-white">Keluar</div>
+                        </div>
+                    </div>
+                    <div class="table-row-group">
+                        {% for i in range(5) %}
+                            {% if i%2 == 0: %}
+                                <div class="table-row bg-second">
+                                    <div class="table-cell">21/10/2023</div>
+                                    <div class="table-cell">744</div>
+                                    <div class="table-cell">698</div>
+                                </div>
+                            {% else %}
+                                <div class="table-row">
+                                    <div class="table-cell">21/10/2023</div>
+                                    <div class="table-cell">744</div>
+                                    <div class="table-cell">698</div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full flex py-5">
+                <a id="apk" href="https://firebasestorage.googleapis.com/v0/b/hk-cctv-hk-teknologi.appspot.com/o/apk-release%2Fhkcctv-20231004-1145.apk?alt=media&token=d24a9f7c-d055-419e-9180-d7a9daf10155&_gl=1*1iw6r38*_ga*MjA3OTQ2NjI3MC4xNjk0MDczMzcx*_ga_CW55HF8NVT*MTY5NzA4MDg0Mi40LjEuMTY5NzA4MTc0NC41Mi4wLjA." class="text-base font-semibold text-white bg-primary py-5 w-3/4 text-center m-auto rounded-full"> Download Mobile Apps </a>
+            </div>
+
+        </div>
+    </section>
+</body>
+</html>
