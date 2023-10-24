@@ -16,7 +16,7 @@
                 <h1 class="text-center text-4xl font-bold text-blue-900">CCTV</h1>
             </div>
 
-            <div class="w-full self-center">
+            <div id="stream" class="w-full self-center" style="display: none;">
                 <iframe src="https://www.youtube.com/embed/1BTsX2WBg8Q?autoplay=1" frameborder="0" class="w-full h-[240px]"></iframe>
             </div>
 
@@ -25,7 +25,7 @@
                 <div class="w-full self-center px-2">
                     <h2 class="text-center py-3 font-bold text-xl">Masuk</h2>
                     <div class="w-3/4 m-auto p-8 bg-second rounded-lg shadow-lg">
-                        <p id="masuk" class="text-center text-5xl text-primary font-display"></p>
+                        <p id="masuk" class="text-center text-5xl text-primary font-display">Disconnected</p>
                     </div>
 
                 </div>
@@ -33,7 +33,7 @@
                 <div class="w-full self-center px-2">
                     <h2 class="text-center py-3 font-bold text-xl">Keluar</h2>
                     <div class="w-3/4 m-auto p-8 bg-second rounded-lg shadow-lg">
-                        <p id="keluar" class="text-center text-5xl text-primary font-display"></p>
+                        <p id="keluar" class="text-center text-5xl text-primary font-display">Disconnected</p>
                     </div>
                 </div>
             
@@ -55,6 +55,7 @@
            console.log('connected');
         });
         socket.on('guest_count', function(data) {
+           document.getElementById('stream').style.display = 'block';
            document.getElementById('masuk').innerHTML = data['in'];
            document.getElementById('keluar').innerHTML = data['out'];
         });
