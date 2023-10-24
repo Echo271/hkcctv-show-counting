@@ -18,29 +18,25 @@
             </div>
 
             <div class="w-full self-center py-4">
-                <div class="table w-3/4 m-auto text-center">
+                <div class="table w-4/5 m-auto text-center">
                     <div class="table-header-group bg-primary text-white">
                         <div class="table-row">
                             <div class="table-cell py-2 border-x-2 border-white">Tanggal</div>
-                            <div class="table-cell">Masuk</div>
-                            <div class="table-cell border-x-2 border-white">Keluar</div>
+                            <div class="table-cell">Venue</div>
+                            <div class="table-cell px-2 border-x-2 border-white">Masuk</div>
+                            <div class="table-cell px-2">Keluar</div>
                         </div>
                     </div>
                     <div class="table-row-group">
-                        {% for i in range(5) %}
-                            {% if i%2 == 0: %}
-                                <div class="table-row bg-second">
-                                    <div class="table-cell">21/10/2023</div>
-                                    <div class="table-cell">744</div>
-                                    <div class="table-cell">698</div>
-                                </div>
-                            {% else %}
-                                <div class="table-row">
-                                    <div class="table-cell">21/10/2023</div>
-                                    <div class="table-cell">744</div>
-                                    <div class="table-cell">698</div>
-                                </div>
-                            {% endif %}
+                        {% for item in data %}
+    
+                            <div class="table-row bg-second">
+                                <div class="table-cell p-2">{{ item }}</div>
+                                <div class="table-cell p-2">{{ data[item]['name'] }}</div>
+                                <div class="table-cell p-2">{{ data[item]['in'] }}</div>
+                                <div class="table-cell p-2">{{ data[item]['out'] }}</div>
+                            </div>
+                    
                         {% endfor %}
                     </div>
                 </div>
