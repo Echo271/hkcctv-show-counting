@@ -4,10 +4,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HKCCTV</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <link rel="icon" type="image/png" href="https://firebasestorage.googleapis.com/v0/b/hk-cctv-hk-teknologi.appspot.com/o/assets%2Fhk-iot-logo.png?alt=media&token=4a4e4b98-912d-4975-9b5b-89dd41d421d9&_gl=1*1y78ae2*_ga*MjA3OTQ2NjI3MC4xNjk0MDczMzcx*_ga_CW55HF8NVT*MTY5NzA4MDg0Mi40LjEuMTY5NzA4MTU1Ny4zMC4wLjA.">
     <link rel="stylesheet" href="/static/css/main.css">
 </head>
 <body>
-    
+    <section>
+        <div class="w-full self-center py-4">
+            <img src="https://firebasestorage.googleapis.com/v0/b/hk-cctv-hk-teknologi.appspot.com/o/assets%2Fhk-iot-full.png?alt=media&token=544c607a-c7f5-433c-a4cc-1f08be65caac&_gl=1*153p0le*_ga*MjA3OTQ2NjI3MC4xNjk0MDczMzcx*_ga_CW55HF8NVT*MTY5NzA4MDg0Mi40LjEuMTY5NzA4MDg5OS4zLjAuMA.." alt="HK IoT" class="w-1/2 m-auto">
+            <h1 class="text-center text-4xl font-bold text-blue-900">SUMMARY</h1>
+        </div>
+    </section>
+    <section>
+        <div class="m-auto w-3/4 flex justify-between p-5 text-2xl font-bold text-blue-900">
+               <p>20_11_2023</p>
+               <p>Bigmall</p>
+        </div>
+
+        <div class="m-auto w-4/5 flex flex-wrap justify-between font-bold text-blue-900">
+            <div class="w-36 pb-2">
+                <p>Total</p>
+                <div class="p-4 mt-2 bg-second text-center">
+                    <p>1000 orang</p>
+                </div>
+            </div>
+            <div class="w-36">
+                <p>Jam Terpadat</p>
+                <div class="p-4 mt-2 bg-second text-center">
+                    <p>15.00 WITA</p>
+                </div>
+            </div>
+            <div class="w-36">
+                <p>Masuk Terbanyak</p>
+                <div class="p-4 mt-2 bg-second text-center">
+                    <p>1000 orang</p>
+                </div>
+            </div>
+            <div class="w-36">
+                <p>Keluar Terbanyak</p>
+                <div class="p-4 mt-2 bg-second text-center">
+                    <p>1000 orang</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pt-5 font-bold text-blue-900">
+        <div class="w-4/5 m-auto flex flex-wrap justify-evenly">
+            <div class="pb-3">
+                <p>Masuk</p>
+                <div class="">
+                    <canvas id="masuk"></canvas>
+                </div>
+            </div>
+            <div class="pb-3">
+                <p>Keluar</p>
+                <div class="">
+                    <canvas id="keluar"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="pb-3 w-4/5 m-auto text-center">
+            <p>Linimasa</p>
+            <div class="m-auto">
+                <canvas id="linimasa"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <script type="module" >
+        (async function() {
+            const data = [
+                { year: 2010, count: 10 },
+                { year: 2011, count: 20 },
+                { year: 2012, count: 15 },
+                { year: 2013, count: 25 },
+                { year: 2014, count: 22 },
+                { year: 2015, count: 30 },
+                { year: 2016, count: 28 },
+            ];
+
+            const masuk = new Chart(
+                document.getElementById('masuk'),
+                {
+                type: 'bar',
+                data: {
+                    labels: data.map(row => row.year),
+                    datasets: [
+                        {
+                        backgroundColor:'blue',    
+                        label: 'Jumlah Pengunjung Masuk Per Jam',
+                        data: data.map(row => row.count)
+                        }
+                        ]
+                    },
+                }
+            );
+
+            const keluar = new Chart(
+                document.getElementById('keluar'),
+                {
+                type: 'bar',
+                data: {
+                    labels: data.map(row => row.year),
+                    datasets: [
+                        {
+                        backgroundColor:'red',    
+                        label: 'Jumlah Pengunjung Keluar Per Jam',
+                        data: data.map(row => row.count)
+                        }
+                        ]
+                    },
+                }
+            );
+            const linimasa = new Chart(
+                document.getElementById('linimasa'),
+                {
+                type: 'line',
+                data: {
+                    labels: data.map(row => row.year),
+                    datasets: [
+                        {
+                        borderWidth:1,
+                        borderColor:'blue',
+                        pointBackgroundColor:'blue',   
+                        label: 'Jumlah Pengunjung',
+                        data: data.map(row => row.count)
+                        }
+                        ]
+                    },
+                }
+            );
+
+
+            })();
+    </script>
 </body>
 </html>
