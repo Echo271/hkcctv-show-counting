@@ -618,6 +618,10 @@ video {
   width: 75%;
 }
 
+.w-36{
+  width: 9rem;
+}
+
 .w-4\/5{
   width: 80%;
 }
@@ -626,64 +630,12 @@ video {
   width: 100%;
 }
 
-.w-5{
-  width: 1.25rem;
-}
-
-.w-10{
-  width: 2.5rem;
-}
-
-.w-2\/3{
-  width: 66.666667%;
-}
-
-.w-20{
-  width: 5rem;
-}
-
-.w-60{
-  width: 15rem;
-}
-
-.w-52{
-  width: 13rem;
-}
-
-.w-40{
-  width: 10rem;
-}
-
-.w-32{
-  width: 8rem;
-}
-
-.w-36{
-  width: 9rem;
-}
-
-.w-80{
-  width: 20rem;
-}
-
-.w-72{
-  width: 18rem;
-}
-
-.w-64{
-  width: 16rem;
-}
-
 .flex-wrap{
   flex-wrap: wrap;
 }
 
 .justify-between{
   justify-content: space-between;
-}
-
-.justify-around{
-  justify-content: space-around;
 }
 
 .justify-evenly{
@@ -731,29 +683,20 @@ video {
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
 
-.bg-gray-600{
-  --tw-bg-opacity: 1;
-  background-color: rgb(75 85 99 / var(--tw-bg-opacity));
-}
-
 .p-2{
   padding: 0.5rem;
-}
-
-.p-8{
-  padding: 2rem;
-}
-
-.p-5{
-  padding: 1.25rem;
 }
 
 .p-4{
   padding: 1rem;
 }
 
-.p-10{
-  padding: 2.5rem;
+.p-5{
+  padding: 1.25rem;
+}
+
+.p-8{
+  padding: 2rem;
 }
 
 .px-2{
@@ -781,16 +724,16 @@ video {
   padding-bottom: 1.25rem;
 }
 
-.pt-5{
-  padding-top: 1.25rem;
-}
-
 .pb-2{
   padding-bottom: 0.5rem;
 }
 
 .pb-3{
   padding-bottom: 0.75rem;
+}
+
+.pt-5{
+  padding-top: 1.25rem;
 }
 
 .text-center{
@@ -826,16 +769,6 @@ video {
   line-height: 1.75rem;
 }
 
-.text-sm{
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
-
-.text-lg{
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
 .font-bold{
   font-weight: 700;
 }
@@ -863,30 +796,4 @@ video {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-@media (min-width: 640px){
-  .sm\:w-32{
-    width: 8rem;
-  }
-
-  .sm\:w-full{
-    width: 100%;
-  }
-
-  .sm\:text-sm{
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-  }
-}
-
-@media (min-width: 1024px){
-  .lg\:w-full{
-    width: 100%;
-  }
-
-  .lg\:text-sm{
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-  }
 }

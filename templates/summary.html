@@ -23,15 +23,15 @@
 
         <div class="m-auto w-4/5 flex flex-wrap justify-between font-bold text-blue-900">
             <div class="w-36 pb-2">
-                <p>Total</p>
+                <p>Total Masuk</p>
                 <div class="p-4 mt-2 bg-second text-center">
-                    <p>1000 orang</p>
+                    <p>{{total_masuk}} orang</p>
                 </div>
             </div>
             <div class="w-36">
-                <p>Jam Terpadat</p>
+                <p>Total Keluar</p>
                 <div class="p-4 mt-2 bg-second text-center">
-                    <p>15.00 WITA</p>
+                    <p>{{total_keluar}} orang</p>
                 </div>
             </div>
             <div class="w-36">
@@ -74,27 +74,23 @@
 
     <script type="module" >
         (async function() {
-            const data = [
-                { year: 2010, count: 10 },
-                { year: 2011, count: 20 },
-                { year: 2012, count: 15 },
-                { year: 2013, count: 25 },
-                { year: 2014, count: 22 },
-                { year: 2015, count: 30 },
-                { year: 2016, count: 28 },
-            ];
+            const jam = '{{jam}}';
+            const jumMasuk = '{{masuk}}';
+            const jumKeluar = '{{keluar}}';
+            const totalMasuk = '{{total_masuk}}';
+            const totalKeluar = '{{total_keluar}}';
 
             const masuk = new Chart(
                 document.getElementById('masuk'),
                 {
                 type: 'bar',
                 data: {
-                    labels: data.map(row => row.year),
+                    labels: jam,
                     datasets: [
                         {
                         backgroundColor:'blue',    
                         label: 'Jumlah Pengunjung Masuk Per Jam',
-                        data: data.map(row => row.count)
+                        data: jumMasuk
                         }
                         ]
                     },
@@ -106,12 +102,12 @@
                 {
                 type: 'bar',
                 data: {
-                    labels: data.map(row => row.year),
+                    labels: jam,
                     datasets: [
                         {
                         backgroundColor:'red',    
                         label: 'Jumlah Pengunjung Keluar Per Jam',
-                        data: data.map(row => row.count)
+                        data: jumKeluar
                         }
                         ]
                     },
@@ -122,14 +118,14 @@
                 {
                 type: 'line',
                 data: {
-                    labels: data.map(row => row.year),
+                    labels: jam,
                     datasets: [
                         {
                         borderWidth:1,
                         borderColor:'blue',
                         pointBackgroundColor:'blue',   
                         label: 'Jumlah Pengunjung',
-                        data: data.map(row => row.count)
+                        data: [jumMasuk,jumKeluar]
                         }
                         ]
                     },
