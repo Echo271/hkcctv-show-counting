@@ -15,28 +15,12 @@ def history():
     data = response.json()
     return render_template('history.html', data=data)
 
-@app.route('/summary')
-def summary():
-    params = request.args.get('date')
+@app.route('/summary/<date>')
+def summary(date):
     response = requests.get(dated_data+'08_12_2023')
     data = response.json()
-    
-    jam = []
-    masuk = []
-    keluar = []
-    total_masuk = 0
-    total_keluar = 0
-    
-    for item in data:
-        if item.isdigit():
-            jam.append(item)
-            masuk.append(data[item]['in'])
-            keluar.append(data[item]['out'])
-        else:
-            total_masuk = data[item]['in']
-            total_keluar = data[item]['out']
 
-    return render_template('summary.html', masuk=masuk, keluar=keluar, total_masuk=total_masuk, total_keluar=total_keluar)
+    return render_template('summary.html', data=data, tanggal=date)
 
 if __name__ == "__main__":
     app.run(debug=True)

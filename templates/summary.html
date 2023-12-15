@@ -17,21 +17,21 @@
     </section>
     <section>
         <div class="m-auto w-3/4 flex justify-between p-5 text-2xl font-bold text-blue-900">
-               <p>20_11_2023</p>
-               <p>Bigmall</p>
+               <p>{{tanggal}}</p>
+               <p id="venue"></p>
         </div>
 
         <div class="m-auto w-4/5 flex flex-wrap justify-between font-bold text-blue-900">
             <div class="w-36 pb-2">
                 <p>Total Masuk</p>
                 <div class="p-4 mt-2 bg-second text-center">
-                    <p>{{total_masuk}} orang</p>
+                    <p><span id="totmasuk"></span> orang</p>
                 </div>
             </div>
             <div class="w-36">
                 <p>Total Keluar</p>
                 <div class="p-4 mt-2 bg-second text-center">
-                    <p>{{total_keluar}} orang</p>
+                    <p><span id="totkeluar"></span> orang</p>
                 </div>
             </div>
             <div class="w-36">
@@ -74,11 +74,26 @@
 
     <script type="module" >
         (async function() {
-            const jam = '{{jam}}';
-            const jumMasuk = '{{masuk}}';
-            const jumKeluar = '{{keluar}}';
-            const totalMasuk = '{{total_masuk}}';
-            const totalKeluar = '{{total_keluar}}';
+
+            const jam = [];
+            const jumMasuk = [];
+            const jumKeluar = [];
+
+            const data = '{{data|tojson}}';
+            const obj = JSON.parse(data);
+            for(var item in obj){
+                if(/\d/.test(item)==true){
+                    jam.push(item);
+                    jumMasuk.push(obj[item]['in']);
+                    jumKeluar.push(obj[item]['out']);
+                }
+            }
+            const totalMasuk = obj['total']['in'];
+            const totalKeluar = obj['total']['out'];
+
+            document.getElementById('venue').innerHTML = obj['total']['name'];
+            document.getElementById('totmasuk').innerHTML = totalMasuk;
+            document.getElementById('totkeluar').innerHTML = totalKeluar;
 
             const masuk = new Chart(
                 document.getElementById('masuk'),
@@ -121,11 +136,22 @@
                     labels: jam,
                     datasets: [
                         {
+                        fill:false,
+                        lineTension:0,
                         borderWidth:1,
                         borderColor:'blue',
                         pointBackgroundColor:'blue',   
-                        label: 'Jumlah Pengunjung',
-                        data: [jumMasuk,jumKeluar]
+                        label: 'Jumlah Pengunjung Masuk',
+                        data: jumMasuk
+                        },
+                        {
+                        fill:false,
+                        lineTension:0,
+                        borderWidth:1,
+                        borderColor:'red',
+                        pointBackgroundColor:'red',   
+                        label: 'Jumlah Pengunjung Keluar',
+                        data: jumKeluar
                         }
                         ]
                     },
