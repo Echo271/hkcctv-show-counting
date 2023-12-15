@@ -17,7 +17,7 @@ def history():
 
 @app.route('/summary/<date>')
 def summary(date):
-    response = requests.get(dated_data+'08_12_2023')
+    response = requests.get(dated_data+date)
     data = response.json()
 
     return render_template('summary.html', data=data, tanggal=date)
